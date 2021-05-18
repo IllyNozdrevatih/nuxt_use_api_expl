@@ -24,11 +24,5 @@ export default {
       required: true,
     },
   },
-  methods: {
-    routeToNews() {
-      this.$router.push('/slug')
-      localStorage.setItem('newsItem', this.newsItem)
-    },
-  },
 }
 </script>
