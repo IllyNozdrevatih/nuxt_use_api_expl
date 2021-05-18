@@ -4,8 +4,8 @@
       <div class="form-group">
         <input
           v-model="filters.qInTitle"
-          @change="updateFilter"
-          type="search"
+          @input="updateFilter"
+          type="text"
           class="form-control"
           placeholder="Поиск..."
         />
@@ -121,6 +121,15 @@ export default {
     }
   },
   async fetch() {
+    if (Object.keys(this.$route.query).length) {
+      const domains = this.$route.query.domains.split(',')
+      this.pagination.page = this.$route.query.page
+      this.pagination.pageSize = this.$route.query.pageSize
+      this.filters.language = this.$route.query.language
+      this.filters.sortBy = this.$route.query.sortBy
+      this.filters.qInTitle = this.$route.query.qInTitle
+      this.filters.domains = domains
+    }
     await this.uploadNews()
   },
 
@@ -133,9 +142,6 @@ export default {
   methods: {
     async uploadNews(loadMore = false) {
       try {
-        if (this.$route.query?.page) {
-          this.pagination.page = this.$route.query.page
-        }
         if (loadMore) {
           this.pagination.page = Number.parseInt(this.pagination.page) + 1
           this.updateQuery(this.pagination.page)

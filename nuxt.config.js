@@ -28,10 +28,10 @@ export default {
   /*
    ** Nuxt.js dev-modules
    */
-  buildModules: [
-    // Doc: https://github.com/nuxt-community/eslint-module
-    '@nuxtjs/eslint-module',
-  ],
+  // buildModules: [
+  //   // Doc: https://github.com/nuxt-community/eslint-module
+  //   '@nuxtjs/eslint-module',
+  // ],
   /*
    ** Nuxt.js modules
    */
